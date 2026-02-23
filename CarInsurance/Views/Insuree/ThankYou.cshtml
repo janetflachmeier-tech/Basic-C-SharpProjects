@@ -1,0 +1,46 @@
+@model CarInsurance.Models.Insuree
+
+@{
+    ViewData["Title"] = "Thank You";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Thank You!</h1>
+    <p class="lead">Your quote has been calculated.</p>
+    
+    <div class="card mt-4 mx-auto" style="max-width: 600px;">
+        <div class="card-header bg-primary text-white">
+            <h3>Your Insurance Quote</h3>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title text-success">@Model.Quote.ToString("C") / month</h2>
+            
+            <hr />
+            
+            <div class="row mt-3">
+                <div class="col-6 text-end"><strong>Name:</strong></div>
+                <div class="col-6 text-start">@Model.FirstName @Model.LastName</div>
+            </div>
+            <div class="row">
+                <div class="col-6 text-end"><strong>Email:</strong></div>
+                <div class="col-6 text-start">@Model.EmailAddress</div>
+            </div>
+            <div class="row">
+                <div class="col-6 text-end"><strong>Vehicle:</strong></div>
+                <div class="col-6 text-start">@Model.CarYear @Model.CarMake @Model.CarModel</div>
+            </div>
+            <div class="row">
+                <div class="col-6 text-end"><strong>Coverage:</strong></div>
+                <div class="col-6 text-start">@(Model.CoverageType ? "Full Coverage" : "Liability Only")</div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <p class="mb-0">We'll send details to your email shortly.</p>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-primary">Get Another Quote</a>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Return Home</a>
+    </div>
+</div>
